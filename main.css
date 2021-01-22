@@ -1,0 +1,56 @@
+.d-none {
+    display: none;
+}
+
+table {
+    /*border-collapse: collapse;*/
+    
+}
+
+tr {
+    width: 300px;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+    border: 4px solid blue;
+    position: relative;
+    cursor: pointer;
+    background-color: rgb(227, 237, 253);
+}
+
+td:hover {
+background-color:  rgba(227, 237, 253, 0.685) !important;
+}
+
+tr:first-child td {
+    border-top: 0;
+}
+
+tr td:first-child {
+    border-left: 0;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+tr td:last-child {
+    border-right: 0;
+}
+
+.game-box {
+    height: 98vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xo-img {
+    position: absolute;
+    height: 90px;
+    width: 90px;
+    top: 2px;
+    left: 5px;
+}
