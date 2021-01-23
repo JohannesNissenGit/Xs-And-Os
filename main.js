@@ -59,16 +59,16 @@ function draw() {
 */
 function checkforwinner() {
 
-    //checks for winning condition see below
+    //checks for winning condition functions see below
     horizontalcheck();
     verticalcheck();
-    diagonalcheck()
+    diagonalcheck();
+    fieldfullcheck();
 
     //what to do if somebody wins (winner contains something)
     if (winner) {
         playerwins();
     }
-
 }
 
 /*
@@ -120,8 +120,19 @@ function diagonalcheck() {
     }
 }
 
+function fieldfullcheck() {
+    if(fields.length < 9){
+
+    }
+    else if (fields.includes(undefined)) {
+      
+    }
+    else playerwins();
+   
+}
+
 /*
-*playerwins(): what to do if somebody meets winning condition
+*playerwins(): what to do if somebody meets winning condition or field is completely full
 */
 
 function playerwins() {
@@ -130,8 +141,11 @@ function playerwins() {
     if (winner == 'circle') {
         winnername = 'Player 1';
     }
-    else {
+    else if (winner == 'cross') {
         winnername = 'Player 2';
+    }
+    else {
+        winnername = 'Nobody';
     }
     setTimeout(function () {
         document.getElementById('message-winner').innerHTML = winnername + ' won!';
@@ -153,10 +167,11 @@ function resetgame() {
     resetlines();
     resetsymbol('circle-');
     resetsymbol('cross-');
+    resetplayers();
 }
 
 function resetlines() {
-    for (let i = 1; i < 8; i++) {
+    for (let i = 1; i < 9; i++) {
         let line = 'line-' + i;
         //document.getElementById(line).classList.add('d-none');
         document.getElementById(line).style.transform = 'scaleX(0.0)';
@@ -169,4 +184,9 @@ function resetsymbol(symbol) {
         document.getElementById(currentsymbol).classList.add('d-none');
     }
 
+}
+
+function resetplayers() {
+    document.getElementById('player-2').classList.add('player-inactive');
+    document.getElementById('player-1').classList.remove('player-inactive');
 }
