@@ -2,34 +2,72 @@
 
 <head>
     <title>X O X O X O</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <script src="main.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
 </head>
 
-<body>
+<body onload="">
+
 
     <div class="game-box">
+        <!--endscreen-->
+        <div class="endscreen d-none" id="gameover">
+            <div class="winner" id="message-winner"></div>
+            <img src="./img/gameover-screen.png" alt="">
+            <div><button class="btn btn-primary" onclick="resetgame()">Start New Game</button></div>
+        </div>
+        <!--Display Players-->
+        <div class="player-panel">
+            <div class="" id="player-1"><img class="" src="./img/circle-dashed-8-128.png" alt=""> Player 1</div>
+            <div class="player-inactive" id="player-2"><img class="" src="./img/x-mark-2-128.png" alt=""> Player 2</div>
 
+
+        </div>
+
+        <!--animated lines-->
+        <div id="line-1" class="horizontal-line" style=" top: 222px;"></div>
+        <div id="line-2" class="horizontal-line" style=" top: 328px;"></div>
+        <div id="line-3" class="horizontal-line" style=" top: 429px;"></div>
+
+        <div id="line-4" class="horizontal-line make-vertical" style=" left: -83px;"></div>
+        <div id="line-5" class="horizontal-line make-vertical" style=" left: 22px;"></div>
+        <div id="line-6" class="horizontal-line make-vertical" style=" left: 123px;"></div>
+
+        <div id="line-7" class="horizontal-line diagonal-line" style=" transform: rotate(45deg) scaleX(0.0) "></div>
+        <div id="line-8" class="horizontal-line diagonal-line" style=" transform: rotate(-45deg) scaleX(0.0) "></div>
+
+        <!--Playing field-->
         <table>
             <tr>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(0)"><img class="xo-img d-none" id="circle-0" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-0" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(1)"><img class="xo-img d-none" id="circle-1" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-1" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(2)"><img class="xo-img d-none" id="circle-2" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-2" src="./img/x-mark-2-128.png" alt=""></td>
             </tr>
             <tr>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(3)"><img class="xo-img d-none" id="circle-3" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-3" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(4)"><img class="xo-img d-none" id="circle-4" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-4" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(5)"><img class="xo-img d-none" id="circle-5" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-5" src="./img/x-mark-2-128.png" alt=""></td>
             </tr>
             <tr>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
-                <td ><img class="xo-img d-none" src="./img/circle-dashed-8-128.png" alt=""> <img class="xo-img d-none" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(6)"><img class="xo-img d-none" id="circle-6" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-6" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(7)"><img class="xo-img d-none" id="circle-7" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-7" src="./img/x-mark-2-128.png" alt=""></td>
+                <td onclick="fillshape(8)"><img class="xo-img d-none" id="circle-8" src="./img/circle-dashed-8-128.png"
+                        alt=""> <img class="xo-img d-none" id="cross-8" src="./img/x-mark-2-128.png" alt=""></td>
             </tr>
         </table>
     </div>
+
 
 
 
